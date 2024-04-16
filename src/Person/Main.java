@@ -1,6 +1,7 @@
-import Person.Person;
+package Person;
 
-import java.util.Scanner;
+import java.io.IOException;
+import java.util.zip.DataFormatException;
 
 public class Main {
 
@@ -33,9 +34,13 @@ public class Main {
      * пользователь должен увидеть стектрейс ошибки.
      */
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         try {
-            Person person =
+            Person person = Input.PersonInput();
+            Write.WritePerson(person);
+            System.out.println("Данные сохранены в файл");
+        } catch (DataFormatException e) {
+            System.out.println("Ошибка!" + e.getMessage());
         }
     }
 }
